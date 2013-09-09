@@ -1,4 +1,4 @@
-﻿=== Per page add to head ===
+﻿=== Random Backgrounds ===
 Contributors: Erikvona
 Plugin Name: Random backgrounds
 Tags: random, backgrounds, background
