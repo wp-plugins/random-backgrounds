@@ -1,0 +1,20 @@
+.evonainput{
+	width:80%;
+	max-width: 1000px;
+	clear:both;
+}
+.deletebutton{
+	color:red;
+}
+.deletebutton:hover{
+	text-decoration:underline;
+}
+.evonabackground{
+	width:100%;
+	min-height:100%;
+}
+.evonademo{
+	display:inline-block;
+	width:70px;
+	height:50px;
+}
