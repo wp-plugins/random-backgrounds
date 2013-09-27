@@ -4,7 +4,7 @@
 Plugin Name: Random backgrounds
 Plugin URI: http://www.evona.nl/plugins/random-background
 Description: Inserts a random background and the CSS to display it on each page.
-Version: 0.2 beta
+Version: 0.3
 Author: Erik von Asmuth
 Author URI: http://evona.nl/over-mij/ (Dutch)
 License: GPLv2
