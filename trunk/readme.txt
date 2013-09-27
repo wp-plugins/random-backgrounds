@@ -2,11 +2,11 @@
 Contributors: Erikvona
 Plugin Name: Random backgrounds
 Tags: random, backgrounds, background
-Author URI: http://erikvona.com/over-mij
+Author URI: http://evona.com/over-mij
 Author: Erik von Asmuth (Erikvona)
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 0.2 beta
+Stable tag: 0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,9 @@ Installation is plain and simple
 1. Not displaying like you want it to? Customize the CSS used to display the backgrounds, or add your own HTML to display them correctly
 
 == Changelog ==
+
+= 0.3 =
+Fixed an issue that could occur when WordPress was hosted inside a subfolder of the domain
 
 = 0.2 beta =
 Initial release for the WordPress plugin repository

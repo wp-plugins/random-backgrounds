@@ -1,5 +1,7 @@
 <?php
 function EvonaBackgroundSettings2(){
+	$request_uri_array = explode("/", $_SERVER['REQUEST_URI']);
+	$currenturl = htmlentities(get_site_url(NULL, "/". $request_uri_array[count($request_uri_array)-2]."/" .end($request_uri_array)));
 	if(isset($_GET['editcss']) && $_GET['editcss']=='true'){
 		$cssfile = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'evonapluginconfig'.DIRECTORY_SEPARATOR.'evonabackground.css';
 		?>
@@ -17,7 +19,7 @@ function EvonaBackgroundSettings2(){
 			$css = fread($csshandle, filesize($cssfile));
 			fclose($csshandle);
 			?>
-			<form method="post" action="<?php echo htmlentities(get_site_url(NULL, $_SERVER["REQUEST_URI"])); ?>">
+			<form method="post" action="<?php echo $currenturl; ?>">
 			<textarea style="white-space:pre; width:80%; min-width:600px; height:300px;" name="css"><?php echo $css ?></textarea>
 			<?php
 			submit_button();
@@ -60,7 +62,7 @@ function EvonaBackgroundSettings2(){
 			<h2>Set your random backgrounds</h2>
 			<h3>Backgrounds (in HTML)</h3>
 			<?php if(isset($message)){echo $message;} ?>
-			<form method="post" action="<?php echo htmlentities(get_site_url(NULL, $_SERVER["REQUEST_URI"])); ?>"> 
+			<form method="post" action="<?php echo $currenturl; ?>"> 
 			<?php
 			echo "<ul id=\"evonainputfields\">";
 			foreach($backgrounds as $number => $background){
@@ -80,7 +82,7 @@ function EvonaBackgroundSettings2(){
 				submit_button(); 
 			?>
 			</form>
-			<a href="<?php echo htmlentities(get_site_url(NULL, $_SERVER["REQUEST_URI"]).'&editcss=true');?>">Edit the CSS file</a>
+			<a href="<?php echo $currenturl.'&amp;editcss=true';?>">Edit the CSS file</a>
             </div>
 			<script type="text/javascript">
 			var backgroundcount = <?php echo count($backgrounds); ?>;
