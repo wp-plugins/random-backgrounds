@@ -1,7 +1,13 @@
 <?php
 function EvonaBackgroundSettings2(){
-	$request_uri_array = explode("/", $_SERVER['REQUEST_URI']);
-	$currenturl = htmlentities(get_site_url(NULL, "/". $request_uri_array[count($request_uri_array)-2]."/" .end($request_uri_array)));
+   $currenturl = 'http';
+   if (isset($_SERVER['HTTPS']) && $_SERVER["HTTPS"] == "on") {$currenturl .= "s";}
+   $currenturl .= "://";
+   if ($_SERVER["SERVER_PORT"] != "80") {
+	$currenturl .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+   } else {
+	$currenturl .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+   }
 	if(isset($_GET['editcss']) && $_GET['editcss']=='true'){
 		$cssfile = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'evonapluginconfig'.DIRECTORY_SEPARATOR.'evonabackground.css';
 		?>

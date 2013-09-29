@@ -4,7 +4,7 @@
 Plugin Name: Random backgrounds
 Plugin URI: http://www.evona.nl/plugins/random-background
 Description: Inserts a random background and the CSS to display it on each page.
-Version: 0.3
+Version: 1.0
 Author: Erik von Asmuth
 Author URI: http://evona.nl/over-mij/ (Dutch)
 License: GPLv2
@@ -27,7 +27,7 @@ function EvonaRandomBackground() {
 add_action('wp_footer','EvonaRandomBackground', '1');
 //Adds CSS to pages
 function EvonaAddCss(){
-	$cssurl = plugins_url('evonapluginconfig'.DIRECTORY_SEPARATOR.'evonabackground.css',dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR);
+	$cssurl = plugins_url('evonabackground.css',dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'evonapluginconfig'.DIRECTORY_SEPARATOR.'evonabackground.css');
 	wp_enqueue_style('evonabackground', $cssurl, null, 'all');
 }
 add_action('wp_enqueue_scripts', 'EvonaAddCss');

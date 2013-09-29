@@ -5,8 +5,8 @@ Tags: random, backgrounds, background
 Author URI: http://evona.com/over-mij
 Author: Erik von Asmuth (Erikvona)
 Requires at least: 3.5
-Tested up to: 3.6
-Stable tag: 0.3
+Tested up to: 3.6.1
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,11 @@ Installation is plain and simple
 1. Not displaying like you want it to? Customize the CSS used to display the backgrounds, or add your own HTML to display them correctly
 
 == Changelog ==
+
+= 1.0 =
+- Now uses $_SERVER superglobal to locate current page url
+- Removed redundant slash in the CSS url
+- Compatibility with Evona Config Manager (to be released, allows you to keep this plugin from removing its config files upon deinstallation).
 
 = 0.3 =
 Fixed an issue that could occur when WordPress was hosted inside a subfolder of the domain
