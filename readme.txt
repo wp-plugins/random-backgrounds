@@ -2,7 +2,7 @@
 Contributors: Erikvona
 Plugin Name: Random backgrounds
 Tags: random, backgrounds, background
-Author URI: http://evona.com/over-mij
+Author URI: http://evona.nl/over-mij
 Author: Erik von Asmuth (Erikvona)
 Requires at least: 3.5
 Tested up to: 3.6.1
