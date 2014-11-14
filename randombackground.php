@@ -8,6 +8,7 @@ Version: 1.0
 Author: Erik von Asmuth
 Author URI: http://evona.nl/over-mij/ (Dutch)
 License: GPLv2
+Text Domain: evonarandombackgrounds
 */
 //Selects a random background, then adds it
 function EvonaRandomBackground() {
@@ -51,7 +52,7 @@ function EvonaCreateMenu() {
 
 function EvonaBackgroundSettings(){
 	if ( !current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+		wp_die( __( 'You do not have sufficient permissions to access this page.', 'evonarandombackgrounds' ) );
 	}
 	include_once(dirname(__FILE__).DIRECTORY_SEPARATOR.'settings.php');
 	EvonaBackgroundSettings2();

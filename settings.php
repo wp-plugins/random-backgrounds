@@ -12,14 +12,14 @@ function EvonaBackgroundSettings2(){
 		$cssfile = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'evonapluginconfig'.DIRECTORY_SEPARATOR.'evonabackground.css';
 		?>
 		<div class="wrap">
-        <h2>Edit Random background CSS</h2>
+        <h2><?php _e('Edit Random background CSS', 'evonarandombackgrounds')?></h2>
 		<?php
 		if(isset($_POST['css'])){
 			if($csswritehandle = fopen($cssfile, 'w')){
 				fwrite($csswritehandle, stripslashes_deep($_POST['css']));
 				fclose($csswritehandle);
-				echo "<p>Succesfully edited ".$cssfile."!</p>";
-			}else{echo "Error writing CSS to ".$cssfile.". Is this file writable?";}
+				echo "<p>".__('Succesfully edited file ', 'evonarandombackgrounds').$cssfile."!</p>";
+			}else{printf( __("Error writing CSS to %s Is this file writable?", 'evonarandombackgrounds'), $cssfile);}
 		}
 		if($csshandle = fopen($cssfile, 'r')){
 			$css = fread($csshandle, filesize($cssfile));
@@ -29,7 +29,7 @@ function EvonaBackgroundSettings2(){
 			<textarea style="white-space:pre; width:80%; min-width:600px; height:300px;" name="css"><?php echo $css ?></textarea>
 			<?php
 			submit_button();
-		}else{echo "Failed reading CSS file".$cssfile.". Is the file readable?";}
+		}else{printf( "Failed reading CSS file %s. Is the file readable?", $cssfile);}
 		echo "</form></div>";
 	}else{
 	  $backgroundfile = dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'evonapluginconfig'.DIRECTORY_SEPARATOR.'backgrounds.txt';
@@ -57,16 +57,16 @@ function EvonaBackgroundSettings2(){
 			  fclose($backgroundhandle);
 			  unset($backgrounds);
 			  $backgrounds = explode("\n", $write);
-			  $message = "Entries succesfully updated";
+			  $message = __("Entries succesfully updated", 'evonarandombackgrounds');
 		  }else{
-				$message = "Failed updating entries. Is ".$backgroundfile." writable?";
+				$message = sprintf(__("Failed updating entries. Is %s writable?", 'evonarandombackgrounds'), $backgroundfile);
 			}
 		endif;
 			?>
 			<div class="wrap">
 			<?php screen_icon(); ?>
-			<h2>Set your random backgrounds</h2>
-			<h3>Backgrounds (in HTML)</h3>
+			<h2><?php _e('Set your random backgrounds', 'evonarandombackgrounds');?></h2>
+			<h3><?php _e('Backgrounds (in HTML)', 'evonarandombackgrounds'); ?></h3>
 			<?php if(isset($message)){echo $message;} ?>
 			<form method="post" action="<?php echo $currenturl; ?>"> 
 			<?php
@@ -74,27 +74,27 @@ function EvonaBackgroundSettings2(){
 			foreach($backgrounds as $number => $background){
 				echo "<li><input class=\"evonainput\" type=\"text\" id=\"".$number."\" name=\"".$number."\" value=\"". htmlentities($background) ."\" />
 				<select id=\"select".$number."\" name=\"select".$number."\">
-					<option value=\"stretched\">Stretched image file</option>
-					<option value=\"tiled\">Tiled pattern</option>
-					<option selected=\"selected\" value=\"custom\">Custom HTML</option>
+					<option value=\"stretched\">".__('<Stretched image file', 'evonarandombackgrounds')."</option>
+					<option value=\"tiled\">".__('Tiled pattern', 'evonarandombackgrounds')."</option>
+					<option selected=\"selected\" value=\"custom\">".__('Custom HTML','evonarandombackgrounds')."</option>
 				</select>
 				<br />
 				<div class=\"evonademo\" id=\"demo".$number."\">".$background."</div><br />
-				<a onclick=\"delete_field(".$number.")\" id=\"delete".$number."\" class=\"deletebutton\">[X] delete this entry</a></li>";
+				<a onclick=\"delete_field(".$number.")\" id=\"delete".$number."\" class=\"deletebutton\">[X] ".__('delete this entry', 'evonarandombackgrounds') ."</a></li>";
 			}?>
 			</ul>
-			<a id='newfield' onclick="create_field()">+ New background</a>
+			<a id='newfield' onclick="create_field()">+ <?php _e('New background', 'evonarandombackgrounds'); ?></a>
 			<?php
 				submit_button(); 
 			?>
 			</form>
-			<a href="<?php echo $currenturl.'&amp;editcss=true';?>">Edit the CSS file</a>
+			<a href="<?php echo $currenturl.'&amp;editcss=true';?>"><?php _e('Edit the CSS file', 'evonarandombackgrounds'); ?></a>
             </div>
 			<script type="text/javascript">
 			var backgroundcount = <?php echo count($backgrounds); ?>;
 			function create_field(){
 				var newlist = document.createElement('li');
-				newlist.innerHTML = "<input class=\"newform evonainput\" type=\"text\" name=\"" + backgroundcount + "\" id=\"" + backgroundcount + "\" value = \"\" /><select id=\"select"+backgroundcount+"\" name=\"select"+backgroundcount+"\"><option selected=\"selected\" value=\"stretched\">Stretched image file</option><option value=\"tiled\">Tiled pattern</option><option value=\"custom\">Custom HTML</option></select><br /><a onclick=\"delete_field("+ backgroundcount +")\" id=\"delete" + backgroundcount + "\" class=\"deletebutton\">[X] delete this entry</a>";
+				newlist.innerHTML = "<input class=\"newform evonainput\" type=\"text\" name=\"" + backgroundcount + "\" id=\"" + backgroundcount + "\" value = \"\" /><select id=\"select"+backgroundcount+"\" name=\"select"+backgroundcount+"\"><option selected=\"selected\" value=\"stretched\"><?php _e('Stretched image file', 'evonarandombackgrounds'); ?></option><option value=\"tiled\"><?php _e('Tiled pattern', 'evonarandombackgrounds'); ?></option><option value=\"custom\"><?php _e('Custom HTML', 'evonarandombackgrounds'); ?></option></select><br /><a onclick=\"delete_field("+ backgroundcount +")\" id=\"delete" + backgroundcount + "\" class=\"deletebutton\">[X] <?php _e('delete this entry', 'evonarandombackgrounds'); ?></a>";
 				var evonainputfields = document.getElementById('evonainputfields');
 				evonainputfields.appendChild(newlist);
 				
